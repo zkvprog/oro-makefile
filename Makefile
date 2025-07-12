@@ -24,8 +24,8 @@ $(DOCKER_COMPOSE) exec --user root php8.3 /bin/bash
 .PHONY: remove-db
 remove-db: ## Remove db container and volume and clear cache
 $(MAKE) docker-stop
-$(DOCKER_RM) cbc-docker_pgsql_1
-$(DOCKER_VOLUME_RM) cbc-docker_postgres-data
+$(DOCKER_RM) oro-docker_pgsql_1
+$(DOCKER_VOLUME_RM) oro-docker_postgres-data
 $(MAKE) docker-start
 $(DOCKER_COMMAND) rm -rf var/cache
 
@@ -39,7 +39,7 @@ $(DOCKER_COMMAND) composer install -n
 .PHONY: project-install
 project-install: ## Project install
 $(DOCKER_COMMAND) rm -rf var/cache
-$(DOCKER_COMMAND) php bin/console oro:install -vvv --drop-database --application-url=https://cbc.loc --user-name=admin --user-email=admin@example.com --user-firstname=John --user-lastname=Doe --user-password=admin --organization-name=Cbc --timeout=0 --env=prod -n
+$(DOCKER_COMMAND) php bin/console oro:install -vvv --drop-database --application-url=https://oro.loc --user-name=admin --user-email=admin@example.com --user-firstname=John --user-lastname=Doe --user-password=admin --organization-name=Oro --timeout=0 --env=prod -n
 
 .PHONY: platform-update
 platform-update: ## Platform update
